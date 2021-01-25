@@ -3,6 +3,7 @@
 
 const MongoClient = require("mongodb").MongoClient
 const { Client } = require('@elastic/elasticsearch')
+
 const esclient = new Client({
   node: config.elasticsearchUrl,
   auth: {

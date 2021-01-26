@@ -1,5 +1,5 @@
-// Simple NodeJS app for synchronizing MongoDB with ElasticSearch in real time
-// Aplicación simple de NodeJS para sincronizar MongoDB con ElasticSearch en tiempo real
+// Simple NodeJS app for detecting and applying changes in collection in MongoDB with ElasticSearch in real time
+// Aplicación simple de NodeJS para detectar y modificar una colección de MongoDB con ElasticSearch en tiempo real
 
 const MongoClient = require("mongodb").MongoClient
 const { Client } = require('@elastic/elasticsearch')
@@ -16,9 +16,8 @@ async function init() {
   const mongoclient = await MongoClient.connect(config.mongoUrl, { useUnifiedTopology: true })
   .catch(err => { console.log(err); });
 
-  if (!mongoclient) {
+  if (!mongoclient)
     return console.log('No client');
-  }
 
   try {
 

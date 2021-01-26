@@ -13,7 +13,7 @@ const esclient = new Client({
 })
 
 async function init() {
-  const mongoclient = await MongoClient.connect(config.mongoUrl, { useUnifiedTopology: true })
+  const mongoclient = await MongoClient.connect('YOUR_MONGODB_SERVER_ADDRESS', { useUnifiedTopology: true })
   .catch(err => { console.log(err); });
 
   if (!mongoclient)
@@ -64,7 +64,7 @@ async function init() {
     }
 
     const insertUpdateReplaceChangeStream = await detectInsertUpdateReplaceChangeStream();
-    upsertChangeStream.on("change", async next => {
+    insertUpdateReplaceChangeStream.on("change", async next => {
       console.log("Pushing document to Elasticsearch, id:", next.fullDocument._id);
       next.fullDocument.id = next.fullDocument._id;
       Reflect.deleteProperty(next.fullDocument, "_id");

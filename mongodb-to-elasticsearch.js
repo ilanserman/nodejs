@@ -2,7 +2,7 @@
 // Aplicación simple de NodeJS para detectar y modificar una colección de MongoDB con ElasticSearch en tiempo real
 
 const MongoClient = require("mongodb").MongoClient
-const { Client } = require('@elastic/elasticsearch')
+import { Client } from '@elastic/elasticsearch'
 
 const esclient = new Client({
   node: 'YOUR_ELASTICSEARCH_ADDRESS',
